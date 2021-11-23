@@ -29,18 +29,18 @@ public class ShootingService {
     }
 
     public void checkShot(String login, int x, int y) {
-        GameField field = gamePropertiesService.getGameField(login);
+        GameField field = gamePropertiesService.getEnemyGameField(login);
         CellStatus status = field.getCells().get(y).get(x);
         // ToDo: чекать на ранение и убийство
         switch (status) {
             case WATER:
-                status = CellStatus.MISS;
+                field.getCells().get(y).set(x, CellStatus.MISS);
                 break;
             case SHIP:
-                status = CellStatus.INJURED;
+                field.getCells().get(y).set(x, CellStatus.INJURED);
                 break;
             default:
-                status = CellStatus.MISS;
+                field.getCells().get(y).set(x, CellStatus.MISS);
         }
         messagingTemplate.convertAndSend("check_" + login, field);
     }

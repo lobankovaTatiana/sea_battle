@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class GameUtils {
     public static final int SIZE = 10;
+    public final static String PC_PREFIX = "PC";
 
     private GameUtils() {
         throw new IllegalStateException("Utility class");

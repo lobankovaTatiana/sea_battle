@@ -37,8 +37,8 @@ public class GameController {
 
     @MessageMapping("/shot")
     public void executeShot(Map<String, String> params) {
-        String login = params.get('login');
-        int x = Integer.parseInt(params.get('x'));
-        int y = Integer.parseInt(params.get('y'));
+        String login = params.get("login");
+        int x = Integer.parseInt(params.get("x"));
+        int y = Integer.parseInt(params.get("y"));
     }
 }
