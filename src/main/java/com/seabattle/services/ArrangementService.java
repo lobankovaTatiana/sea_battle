@@ -30,27 +30,25 @@ public class ArrangementService {
 
     public GameField getCoastArrangement(GameField field) {
         for (int i = 2; i <= 4; i++) {
-            setShips(GameUtils.ships().get(i), i, field, false);
             int c = GameUtils.ships().get(i);
-            while ( c > 0) {
+            while (c > 0) {
                 boolean q = false;
                 while (!q) {
                     int side = GameUtils.getRandomIntegerBetweenRange(0, 1);
-                    if(side == 1) {
-                        List<Integer> xList = Arrays.asList(0, 9);
-                        int y = GameUtils.getRandomIntegerBetweenRange(0, GameUtils.SIZE - 1);
-                        int x = xList.get( GameUtils.getRandomIntegerBetweenRange(0, 1));
-                        q = checkLocationShip(side, x, y, i, field, false);
+                    List<Integer> coordinateList = Arrays.asList(0, 9);
+                    int cord = GameUtils.getRandomIntegerBetweenRange(0, GameUtils.SIZE - 1);
+                    if (side == 1) {
+                        int x = coordinateList.get(GameUtils.getRandomIntegerBetweenRange(0, 1));
+                        q = checkLocationShip(side, x, cord, i, field, false);
                         if (q) {
-                            setShip(x, y, i, side, field);
+                            setShip(x, cord, i, side, field);
                         }
                     } else {
-                        List<Integer> yList = Arrays.asList(0, 9);
-                        int x = GameUtils.getRandomIntegerBetweenRange(0, GameUtils.SIZE - 1);
-                        int y = yList.get( GameUtils.getRandomIntegerBetweenRange(0, 1));
-                        q = checkLocationShip(side, x, y, i, field, false);
+                        int y = coordinateList.get(GameUtils.getRandomIntegerBetweenRange(0, 1));
+                        q = checkLocationShip(side,
+                                cord, y, i, field, false);
                         if (q) {
-                            setShip(x, y, i, side, field);
+                            setShip(cord, y, i, side, field);
                         }
                     }
                 }
